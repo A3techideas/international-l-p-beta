@@ -168,7 +168,7 @@ export default function Home() {
               <path d="M2 5a3 3 0 013-3h2a1 1 0 011 1v2a1 1 0 01-.293.707L6.414 7.707a9.042 9.042 0 004.879 4.879l2-2A1 1 0 0114 10h2a1 1 0 011 1v2a3 3 0 01-3 3h-.25C7.271 16 4 12.729 4 8.25V8a3 3 0 013-3H7" />
             </svg>
             <span className="whitespace-nowrap text-sm sm:text-base font-semibold">
-              +1 (555) 123-4567
+            +1 541-313-4454
             </span>
           </div>
           <button
@@ -406,7 +406,7 @@ export default function Home() {
       {/* Lead Form Section */}
       <section className="px-4 sm:px-8 py-12 sm:py-16 lg:px-16">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black text-center mb-8 sm:mb-12">Lead Form</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black text-center mb-8 sm:mb-12">Request a Callback</h2>
           <div className="bg-[#FAFAFA] rounded-lg p-6 sm:p-8 lg:p-12">
             <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
               <form
