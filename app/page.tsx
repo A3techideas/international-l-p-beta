@@ -1,7 +1,15 @@
 'use client';
 
 import Image from "next/image";
-import { useCallback, useState } from "react";
+import {
+  FormEvent,
+  useCallback,
+  useMemo,
+  useState,
+  useTransition,
+} from "react";
+
+import { submitLead } from "@/app/actions";
 
 const testimonials = [
   {
@@ -37,7 +45,77 @@ const testimonials = [
 export default function Home() {
   const [showPhone, setShowPhone] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneCountryCode, setPhoneCountryCode] = useState("+1");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [company, setCompany] = useState("");
+  const [service, setService] = useState("");
+  const [statusMessage, setStatusMessage] = useState<
+    { type: "success" | "error"; text: string } | null
+  >(null);
+  const [isPending, startTransition] = useTransition();
   const totalSlides = testimonials.length;
+
+  const countryCodes = useMemo(
+    () => [
+      { code: "+1", label: "US" },
+      { code: "+44", label: "UK" },
+      { code: "+61", label: "AU" },
+      { code: "+91", label: "IN" },
+      { code: "+234", label: "NG" },
+    ],
+    []
+  );
+
+  const handleSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      setStatusMessage(null);
+
+      const payload = {
+        name,
+        email,
+        phoneCountryCode,
+        phoneNumber,
+        company,
+        service,
+      };
+
+      startTransition(async () => {
+        try {
+          await submitLead(payload);
+          setStatusMessage({
+            type: "success",
+            text: "Thanks! We will reach out shortly.",
+          });
+          setName("");
+          setEmail("");
+          setPhoneNumber("");
+          setCompany("");
+          setService("");
+          setPhoneCountryCode("+1");
+        } catch (error) {
+          setStatusMessage({
+            type: "error",
+            text:
+              error instanceof Error
+                ? error.message
+                : "We couldn't submit the form. Please try again.",
+          });
+        }
+      });
+    },
+    [
+      company,
+      email,
+      name,
+      phoneCountryCode,
+      phoneNumber,
+      service,
+      startTransition,
+    ]
+  );
 
   const goToSlide = useCallback(
     (index: number) => {
@@ -331,31 +409,87 @@ export default function Home() {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black text-center mb-8 sm:mb-12">Lead Form</h2>
           <div className="bg-[#FAFAFA] rounded-lg p-6 sm:p-8 lg:p-12">
             <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-              <div className="space-y-4 sm:space-y-6">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-4 sm:space-y-6"
+              >
                 <input
                   type="text"
                   placeholder="Name"
-                  className="w-full px-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56F19] placeholder:text-[#8E8E8E] text-sm sm:text-base"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  className="w-full px-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56F19] placeholder:text-[#8E8E8E] text-sm sm:text-base text-[#1F1F1F]"
+                  required
                 />
                 <input
                   type="email"
                   placeholder="Email"
-                  className="w-full px-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56F19] placeholder:text-[#8E8E8E] text-sm sm:text-base"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  className="w-full px-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56F19] placeholder:text-[#8E8E8E] text-sm sm:text-base text-[#1F1F1F]"
+                  required
                 />
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                  <label className="sr-only" htmlFor="phone-country-code">
+                    Country code
+                  </label>
+                  <select
+                    id="phone-country-code"
+                    value={phoneCountryCode}
+                    onChange={(event) => setPhoneCountryCode(event.target.value)}
+                    className="sm:w-32 px-4 py-3 bg-[#F0F0F0] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56F19] text-sm sm:text-base text-[#1F1F1F]"
+                    required
+                  >
+                    {countryCodes.map((option) => (
+                      <option key={option.code} value={option.code}>
+                        {option.label} ({option.code})
+                      </option>
+                    ))}
+                  </select>
+                  <input
+                    type="tel"
+                    placeholder="Phone Number"
+                    value={phoneNumber}
+                    onChange={(event) => setPhoneNumber(event.target.value)}
+                    className="w-full px-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56F19] placeholder:text-[#8E8E8E] text-sm sm:text-base text-[#1F1F1F]"
+                    required
+                  />
+                </div>
                 <input
                   type="text"
                   placeholder="Company"
-                  className="w-full px-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56F19] placeholder:text-[#8E8E8E] text-sm sm:text-base"
+                  value={company}
+                  onChange={(event) => setCompany(event.target.value)}
+                  className="w-full px-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56F19] placeholder:text-[#8E8E8E] text-sm sm:text-base text-[#1F1F1F]"
                 />
                 <input
                   type="text"
                   placeholder="What Service are you looking for?"
-                  className="w-full px-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56F19] placeholder:text-[#8E8E8E] text-sm sm:text-base"
+                  value={service}
+                  onChange={(event) => setService(event.target.value)}
+                  className="w-full px-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56F19] placeholder:text-[#8E8E8E] text-sm sm:text-base text-[#1F1F1F]"
                 />
-                <button className="w-full bg-[#F56F19] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:opacity-90 transition-colors">
-                  Get Your Free Strategy Call
+                {statusMessage ? (
+                  <p
+                    className={`text-sm sm:text-base font-medium ${
+                      statusMessage.type === "success"
+                        ? "text-green-600"
+                        : "text-red-600"
+                    }`}
+                    role="status"
+                    aria-live="polite"
+                  >
+                    {statusMessage.text}
+                  </p>
+                ) : null}
+                <button
+                  type="submit"
+                  disabled={isPending}
+                  className="w-full bg-[#F56F19] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-colors hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {isPending ? "Submitting..." : "Get Your Free Strategy Call"}
                 </button>
-              </div>
+              </form>
               <div className="flex justify-center lg:justify-end mt-8 lg:mt-0">
             <Image
                   src="/robot.svg"
