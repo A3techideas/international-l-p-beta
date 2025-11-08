@@ -26,13 +26,13 @@ export async function submitLead(payload: LeadFormPayload) {
 
   const supabase = supabaseServerClient();
 
-  const { error } = await supabase.from("leads").insert({
+  const { error } = await supabase.from("strategy_call_requests").insert({
     name: payload.name.trim(),
     email: payload.email.trim(),
     phone_country_code: payload.phoneCountryCode.trim(),
     phone_number: payload.phoneNumber.trim(),
     company: payload.company.trim() || null,
-    service: payload.service.trim() || null,
+    service_interest: payload.service.trim() || null,
   });
 
   if (error) {
