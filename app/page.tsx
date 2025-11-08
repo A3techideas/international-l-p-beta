@@ -217,7 +217,7 @@ export default function Home() {
       {/* Our Expertise Section */}
       <section className="px-4 sm:px-8 py-16 sm:py-20 lg:py-24 lg:px-16 bg-gray-50">
     <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black text-center mb-8 sm:mb-12">Our Expertise</h2>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black text-center mb-8 sm:mb-12">Our Expertises</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-y-10 sm:gap-x-8 sm:gap-y-16 lg:gap-y-26">
             
             {/* 1. Software Development */}
