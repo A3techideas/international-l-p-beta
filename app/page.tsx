@@ -152,8 +152,9 @@ export default function Home() {
         />
         </div>
         <div className="flex items-center gap-3">
-          <div
+          <a
             id="phone-contact"
+            href="tel:+15413134454"
             className={`flex items-center gap-2 bg-white border border-[#F56F19] text-[#F56F19] rounded-full shadow-sm overflow-hidden transition-all duration-300 ease-in-out origin-right ${
               showPhone
                 ? "max-w-[240px] px-4 py-2 opacity-100 translate-x-0"
@@ -168,9 +169,9 @@ export default function Home() {
               <path d="M2 5a3 3 0 013-3h2a1 1 0 011 1v2a1 1 0 01-.293.707L6.414 7.707a9.042 9.042 0 004.879 4.879l2-2A1 1 0 0114 10h2a1 1 0 011 1v2a3 3 0 01-3 3h-.25C7.271 16 4 12.729 4 8.25V8a3 3 0 013-3H7" />
             </svg>
             <span className="whitespace-nowrap text-sm sm:text-base font-semibold">
-            +1 541-313-4454
+              +1 541-313-4454
             </span>
-          </div>
+          </a>
           <button
             type="button"
             onClick={togglePhone}
@@ -197,7 +198,15 @@ export default function Home() {
             <p className="text-[#817E7E] leading-relaxed text-[clamp(1rem,1.7vw,1.875rem)] mt-4 sm:mt-6 md:mt-7 lg:mt-8 max-w-2xl">
               Empowering USA businesses with cutting-edge technology and growth-driven strategies.
             </p>
-            <button className="bg-[#F56F19] text-white px-6 sm:px-7 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg text-base sm:text-lg font-semibold hover:opacity-90 transition-colors mt-6 sm:mt-9 md:mt-10 lg:mt-12 xl:mt-16">
+            <button
+              type="button"
+              onClick={() =>
+                document
+                  .getElementById("request-callback")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="bg-[#F56F19] text-white px-6 sm:px-7 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg text-base sm:text-lg font-semibold hover:opacity-90 transition-colors mt-6 sm:mt-9 md:mt-10 lg:mt-12 xl:mt-16"
+            >
               Get Free Consultation
             </button>
           </div>
@@ -408,7 +417,7 @@ export default function Home() {
       </section>
 
       {/* Lead Form Section */}
-      <section className="px-4 sm:px-8 py-12 sm:py-16 lg:px-16">
+      <section id="request-callback" className="px-4 sm:px-8 py-12 sm:py-16 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black text-center mb-8 sm:mb-12">
             Request a Callback
@@ -432,7 +441,7 @@ export default function Home() {
                   className="w-full px-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56F19] placeholder:text-[#8E8E8E] text-sm sm:text-base text-[#1F1F1F]"
                   required
                 />
-                <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                <div className="flex flex-row flex-wrap items-center gap-3 sm:flex-nowrap">
                   <label className="sr-only" htmlFor="phone-country-code">
                     Country code
                   </label>
@@ -440,7 +449,7 @@ export default function Home() {
                     id="phone-country-code"
                     value={phoneCountryCode}
                     onChange={(event) => setPhoneCountryCode(event.target.value)}
-                    className="sm:w-32 px-4 py-3 bg-[#F0F0F0] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56F19] text-sm sm:text-base text-[#1F1F1F]"
+                    className="w-auto min-w-[5.5rem] px-4 py-3 bg-[#F0F0F0] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56F19] text-sm sm:text-base text-[#1F1F1F]"
                     required
                   >
                     {countryCodes.map((option) => (
@@ -454,7 +463,9 @@ export default function Home() {
                     placeholder="Phone Number"
                     value={phoneNumber}
                     onChange={(event) => setPhoneNumber(event.target.value)}
-                    className="w-full px-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56F19] placeholder:text-[#8E8E8E] text-sm sm:text-base text-[#1F1F1F]"
+                  autoComplete="tel"
+                  inputMode="tel"
+                  className="flex-1 min-w-[10rem] px-4 py-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56F19] placeholder:text-[#8E8E8E] text-sm sm:text-base text-[#1F1F1F]"
                     required
                   />
                 </div>
@@ -494,10 +505,10 @@ export default function Home() {
                 </button>
               </form>
             </div>
-            <div className="flex justify-center lg:justify-end">
+            <div className="flex justify-center lg:-translate-y-12 lg:-translate-x-2 transition-transform">
               <video
                 src="/lastvideo.mp4"
-                className="w-full max-w-[300px] sm:max-w-[380px] lg:max-w-[320px] rounded-xl"
+                className="w-full max-w-[200px] sm:max-w-[380px] lg:max-w-[320px] rounded-xl"
                 autoPlay
                 loop
                 muted
