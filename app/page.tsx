@@ -410,13 +410,12 @@ export default function Home() {
       {/* Lead Form Section */}
       <section className="px-4 sm:px-8 py-12 sm:py-16 lg:px-16">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black text-center mb-8 sm:mb-12">Request a Callback</h2>
-          <div className="bg-[#FAFAFA] rounded-lg p-6 sm:p-8 lg:p-12">
-            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-              <form
-                onSubmit={handleSubmit}
-                className="space-y-4 sm:space-y-6"
-              >
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black text-center mb-8 sm:mb-12">
+            Request a Callback
+          </h2>
+          <div className="grid lg:grid-cols-[minmax(0,0.75fr)_auto] gap-8 sm:gap-12 items-center">
+            <div className="bg-[#FAFAFA] rounded-lg p-6 sm:p-8 lg:p-10">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <input
                   type="text"
                   placeholder="Name"
@@ -494,15 +493,20 @@ export default function Home() {
                   {isPending ? "Submitting..." : "Get Your Free Strategy Call"}
                 </button>
               </form>
-              <div className="flex justify-center lg:justify-end mt-8 lg:mt-0">
-            <Image
-                  src="/robot.svg"
-                  alt="Robot illustration"
-                  width={500}
-                  height={500}
-                  className="w-full max-w-[300px] sm:max-w-[400px] lg:max-w-[500px]"
-                />
-              </div>
+            </div>
+            <div className="flex justify-center lg:justify-end">
+              <video
+                src="/lastvideo.mp4"
+                className="w-full max-w-[300px] sm:max-w-[380px] lg:max-w-[320px] rounded-xl"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                aria-label="Lead form visual"
+              >
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
