@@ -152,26 +152,35 @@ export default function Home() {
         />
         </div>
         <div className="flex items-center gap-3">
-          <a
-            id="phone-contact"
-            href="tel:+15413134454"
-            className={`flex items-center gap-2 bg-white border border-[#F56F19] text-[#F56F19] rounded-full shadow-sm overflow-hidden transition-all duration-300 ease-in-out origin-right ${
+          <div
+            className={`flex items-center gap-2 transition-all duration-300 ease-in-out origin-right ${
               showPhone
-                ? "max-w-[240px] px-4 py-2 opacity-100 translate-x-0"
-                : "max-w-0 px-0 py-0 opacity-0 translate-x-2"
+                ? "max-w-[320px] opacity-100 translate-x-0"
+                : "max-w-0 opacity-0 translate-x-2"
             }`}
           >
-            <svg
-              className="w-4 h-4"
-              fill="currentColor"
-              viewBox="0 0 20 20"
+            <a
+              id="phone-contact"
+              href="tel:+15413134454"
+              className="flex items-center gap-2 bg-white border border-[#F56F19] text-[#F56F19] rounded-full shadow-sm px-4 py-2 text-sm sm:text-base font-semibold focus:outline-none focus:ring-2 focus:ring-[#F56F19]/60"
             >
-              <path d="M2 5a3 3 0 013-3h2a1 1 0 011 1v2a1 1 0 01-.293.707L6.414 7.707a9.042 9.042 0 004.879 4.879l2-2A1 1 0 0114 10h2a1 1 0 011 1v2a3 3 0 01-3 3h-.25C7.271 16 4 12.729 4 8.25V8a3 3 0 013-3H7" />
-            </svg>
-            <span className="whitespace-nowrap text-sm sm:text-base font-semibold">
-              +1 541-313-4454
-            </span>
-          </a>
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 5a3 3 0 013-3h2a1 1 0 011 1v2a1 1 0 01-.293.707L6.414 7.707a9.042 9.042 0 004.879 4.879l2-2A1 1 0 0114 10h2a1 1 0 011 1v2a3 3 0 01-3 3h-.25C7.271 16 4 12.729 4 8.25V8a3 3 0 013-3H7" />
+              </svg>
+              <span className="whitespace-nowrap">+1 541-313-4454</span>
+            </a>
+            <a
+              href="https://wa.me/15413134454"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-[#25D366] text-white rounded-full shadow-sm px-4 py-2 text-sm sm:text-base font-semibold hover:bg-[#1ebe57] focus:outline-none focus:ring-2 focus:ring-[#25D366]/60"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M16.04 2.67c-7.3 0-13.26 5.93-13.26 13.23 0 2.33.62 4.59 1.8 6.58l-1.91 6.93 7.11-1.86c1.92 1.05 4.08 1.6 6.29 1.6h.01c7.3 0 13.26-5.93 13.26-13.23 0-3.54-1.38-6.86-3.89-9.36-2.51-2.5-5.84-3.89-9.41-3.89zm7.77 20.18c-.32.9-1.84 1.72-2.55 1.83-.65.1-1.47.14-2.38-.15-.55-.18-1.26-.4-2.17-.78-3.82-1.64-6.31-5.47-6.5-5.73-.19-.26-1.55-2.06-1.55-3.93 0-1.88.98-2.8 1.33-3.18.35-.37.77-.46 1.02-.46.25 0 .51.01.73.01.24 0 .55-.09.86.66.32.79 1.09 2.73 1.18 2.93.1.2.16.44.03.71-.13.27-.19.44-.38.68-.19.24-.4.54-.57.73-.19.19-.39.4-.17.78.22.37.97 1.6 2.09 2.59 1.44 1.28 2.65 1.68 3.02 1.87.37.19.59.16.81-.1.22-.26.94-1.09 1.19-1.45.25-.35.5-.3.82-.18.32.12 2.07.98 2.42 1.16.35.18.58.26.66.41.09.15.09.86-.23 1.76z" />
+              </svg>
+              <span className="whitespace-nowrap">WhatsApp</span>
+            </a>
+          </div>
           <button
             type="button"
             onClick={togglePhone}
