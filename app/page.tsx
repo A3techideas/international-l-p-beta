@@ -201,15 +201,19 @@ export default function Home() {
               Get Free Consultation
             </button>
           </div>
-          <div className="flex justify-center sm:justify-end items-end lg:absolute lg:right-12 xl:right-16 lg:bottom-[-20px] mt-8 lg:mt-0">
-            <Image
-              src="/header.svg"
-              alt="Technology illustration"
-              width={600}
-              height={500}
-              priority
-              className="w-full max-w-[260px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[460px] xl:max-w-[520px]"
-            />
+          <div className="flex justify-center sm:justify-end items-end lg:absolute lg:right-12 xl:right-16 lg:bottom-12 mt-8 lg:mt-0">
+            <video
+              src="/video.mp4"
+              className="w-full max-w-[360px] sm:max-w-[440px] md:max-w-[520px] lg:max-w-[580px] xl:max-w-[620px] rounded-xl"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              aria-label="Technology showcase video"
+            >
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </section>
