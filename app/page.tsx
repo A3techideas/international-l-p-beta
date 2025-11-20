@@ -138,9 +138,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden w-full max-w-full">
       {/* Header */}
-      <header className="flex items-center justify-between px-4 sm:px-8 py-4 sm:py-6">
+      <header className="flex items-center justify-between px-4 sm:px-8 py-4 sm:py-6 w-full max-w-full overflow-hidden">
         <div className="flex items-center gap-3">
         <Image
             src="/a3.svg"
@@ -197,7 +197,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 md:py-20 lg:py-24 relative pb-20 sm:pb-28 md:pb-32 lg:pb-36 xl:pb-40">
+      <section className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 md:py-20 lg:py-24 relative pb-20 sm:pb-28 md:pb-32 lg:pb-36 xl:pb-40 w-full max-w-full overflow-hidden">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-start">
           <div className="w-full max-w-3xl md:pl-4 lg:pl-8 xl:pl-12 2xl:pl-16">
             <h1 className="font-bold text-black leading-[1.1] sm:leading-tight tracking-tight text-[clamp(2.25rem,3.8vw,4.5rem)] mb-4 sm:mb-6">
@@ -237,7 +237,7 @@ export default function Home() {
       </section>
 
       {/* Our Expertise Section */}
-      <section className="px-4 sm:px-8 py-16 sm:py-20 lg:py-24 lg:px-16 bg-gray-50">
+      <section className="px-4 sm:px-8 py-16 sm:py-20 lg:py-24 lg:px-16 bg-gray-50 w-full max-w-full overflow-hidden">
     <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black text-center mb-8 sm:mb-12">Our Expertises</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-y-10 sm:gap-x-8 sm:gap-y-16 lg:gap-y-26">
@@ -311,7 +311,7 @@ export default function Home() {
 </section>
 
       {/* Why Choose A3 Tech Ideas Section */}
-      <section className="px-4 sm:px-8 py-16 sm:py-20 lg:py-30 lg:px-16">
+      <section className="px-4 sm:px-8 py-16 sm:py-20 lg:py-30 lg:px-16 w-full max-w-full overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black text-center mb-8 sm:mb-12">Why Choose A3 Tech Ideas?</h2>
           <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-y-10 sm:gap-8 lg:gap-x-12 lg:gap-y-16">
@@ -356,13 +356,13 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="px-4 sm:px-8 py-16 sm:py-20 lg:py-30 lg:px-16 bg-gray-50">
+      <section className="px-4 sm:px-8 py-16 sm:py-20 lg:py-30 lg:px-16 bg-gray-50 w-full max-w-full overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black text-center mb-8 sm:mb-12">Testimonials</h2>
-          <div className="relative w-full max-w-3xl mx-auto">
-            <div className="overflow-hidden rounded-2xl bg-white/60">
+          <div className="relative w-full max-w-3xl mx-auto overflow-hidden">
+            <div className="overflow-hidden rounded-2xl bg-white/60 w-full">
               <div
-                className="flex transition-transform duration-500 ease-out"
+                className="flex transition-transform duration-500 ease-out w-full"
                 style={{ transform: `translateX(-${activeSlide * 100}%)` }}
               >
                 {testimonials.map((item) => (
@@ -426,7 +426,7 @@ export default function Home() {
       </section>
 
       {/* Lead Form Section */}
-      <section id="request-callback" className="px-4 sm:px-8 py-12 sm:py-16 lg:px-16">
+      <section id="request-callback" className="px-4 sm:px-8 py-12 sm:py-16 lg:px-16 w-full max-w-full overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black text-center mb-8 sm:mb-12">
             Request a Callback
@@ -533,7 +533,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#F56F19] px-4 sm:px-8 py-8 sm:py-12 lg:px-16">
+      <footer className="bg-[#F56F19] px-4 sm:px-8 py-8 sm:py-12 lg:px-16 w-full max-w-full overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-center gap-4 sm:gap-6 mb-6 sm:mb-8">
             <a
