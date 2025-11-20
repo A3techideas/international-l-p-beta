@@ -167,7 +167,7 @@ export default function Home() {
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 5a3 3 0 013-3h2a1 1 0 011 1v2a1 1 0 01-.293.707L6.414 7.707a9.042 9.042 0 004.879 4.879l2-2A1 1 0 0114 10h2a1 1 0 011 1v2a3 3 0 01-3 3h-.25C7.271 16 4 12.729 4 8.25V8a3 3 0 013-3H7" />
               </svg>
-              <span className="whitespace-nowrap">+1 541-313-4454</span>
+              <span className="whitespace-nowrap">+15418133506</span>
             </a>
             <a
               href="https://wa.me/15413134454"
